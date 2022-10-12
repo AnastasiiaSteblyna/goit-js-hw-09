@@ -6,24 +6,23 @@ const refs = {
   form: document.querySelector('.form'),
 };
 
-let delay = Number(refs.delay.value);
-let step = Number(refs.step.value);
-let amount = Number(refs.amount.value);
-
 refs.submitBtn.addEventListener('click', onFormSubmit);
 
 function onFormSubmit(event) {
   event.preventDefault();
 
   const formData = {
-    Delay: delay,
-    Step: step,
-    Amount: amount,
+    Delay: Number(refs.delay.value),
+    Step: Number(refs.step.value),
+    Amount: Number(refs.amount.value),
   };
-
   console.log(formData);
 
-  for (let position = 0; position <= amount; position += 1) {
+  let delay = Number(refs.delay.value);
+  let step = Number(refs.step.value);
+
+  for (let position = 1; position <= Number(refs.amount.value); position += 1) {
+    delay += step;
     createPromise(position, delay);
   }
 

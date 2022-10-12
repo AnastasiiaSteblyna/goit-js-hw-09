@@ -28,10 +28,12 @@ new flatpickr('#datetime-picker', {
 });
 
 refs.startBtn.addEventListener('click', () => {
-  refs.startBtn.disabled = true;
+  // refs.startBtn.disabled = true;
 
-  timerId = setInterval(() => {
+  // timerId =
+  setInterval(() => {
     const currentTime = Date.now();
+
     timerTime = choosedTime - currentTime;
     timerTimeConvertd = convertMs(choosedTime - currentTime);
 
@@ -41,7 +43,7 @@ refs.startBtn.addEventListener('click', () => {
     refs.seconds.textContent = addLeadingZero(timerTimeConvertd.seconds);
 
     if (timerTime <= 1000) {
-      clearInterval(timerId);
+      clearInterval();
       refs.startBtn.disabled = false;
     }
   }, 1000);

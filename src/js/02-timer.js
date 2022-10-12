@@ -33,14 +33,14 @@ refs.startBtn.addEventListener('click', () => {
   // timerId =
   setInterval(() => {
     const currentTime = Date.now();
+    const convertedTime = convertMs(choosedTime - currentTime);
 
     timerTime = choosedTime - currentTime;
-    timerTimeConvertd = convertMs(choosedTime - currentTime);
 
-    refs.days.textContent = addLeadingZero(timerTimeConvertd.days);
-    refs.hours.textContent = addLeadingZero(timerTimeConvertd.hours);
-    refs.minutes.textContent = addLeadingZero(timerTimeConvertd.minutes);
-    refs.seconds.textContent = addLeadingZero(timerTimeConvertd.seconds);
+    refs.days.textContent = addLeadingZero(convertedTime.days);
+    refs.hours.textContent = addLeadingZero(convertedTime.hours);
+    refs.minutes.textContent = addLeadingZero(convertedTime.minutes);
+    refs.seconds.textContent = addLeadingZero(convertedTime.seconds);
 
     if (timerTime <= 1000) {
       clearInterval();

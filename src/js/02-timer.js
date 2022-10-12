@@ -23,8 +23,8 @@ new flatpickr('#datetime-picker', {
     if (choosedTime < Date.now()) {
       alert('Choose the time in the future');
       refs.startBtn.disabled = true;
+      return choosedTime;
     }
-    return choosedTime;
   },
 });
 

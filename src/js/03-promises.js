@@ -17,8 +17,8 @@ function onFormSubmit(event) {
   let step = Number(refs.step.value);
 
   for (let position = 1; position <= Number(refs.amount.value); position += 1) {
-    delay += step;
     createPromise(position, delay);
+    delay += step;
   }
 
   refs.form.reset();

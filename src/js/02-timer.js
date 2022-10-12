@@ -22,16 +22,14 @@ new flatpickr('#datetime-picker', {
     choosedTime = selectedDates[0].getTime();
     if (choosedTime < Date.now()) {
       alert('Choose the time in the future');
+      refs.startBtn.disabled = true;
     }
     return choosedTime;
   },
 });
 
 refs.startBtn.addEventListener('click', () => {
-  // refs.startBtn.disabled = true;
-
-  // timerId =
-  setInterval(() => {
+  const timer = setInterval(() => {
     const currentTime = Date.now();
     const convertedTime = convertMs(choosedTime - currentTime);
 
@@ -43,8 +41,7 @@ refs.startBtn.addEventListener('click', () => {
     refs.seconds.textContent = addLeadingZero(convertedTime.seconds);
 
     if (timerTime <= 1000) {
-      clearInterval();
-      refs.startBtn.disabled = false;
+      clearInterval(timer);
     }
   }, 1000);
 });
